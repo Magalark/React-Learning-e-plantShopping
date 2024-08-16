@@ -6,16 +6,23 @@ import './CartItem.css';
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
-
+    
   // For debugging
   console.log("Cart array:", cart);
-  console.log("Cost of item:", item.cost);
-  console.log("Quantity:", item.quantity);
-  console.log("Total for item:", calculateTotalCost(item));
-
+  //console.log("Cost of item:", item.cost);
+  //console.log("Quantity:", item.quantity);
+  //console.log("Total for item:", calculateTotalCost(item));
+    
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
-    return cart.reduce((total, item) => total + item.quantity * item.cost, 0);
+    let totalAmount = 0;
+    console.log(cart);
+    cart.map(item=>{
+        let cost = parseInt(item.cost.substring(1,item.cost.length));
+        totalAmount = totalAmount + (cost*item.quantity);
+    })
+    return totalAmount;
+    //return cart.reduce((total, item) => total + item.quantity * item.cost, 0);
     /*
     let totalAmount = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -57,7 +64,13 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    return item.quantity * item.cost;
+    //let cost = parseInt(item.cost.substring(1,item.cost.length));
+    return (cost * item.quantity);
+    //return item.quantity * item.cost;
+  };
+
+  const handleCheckoutShopping = (e) => {
+    alert('Functionality to be added for future reference');
   };
 
   return (
@@ -85,7 +98,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button className="get-started-button1" onClick={handleCheckoutShopping}>Checkout</button>
       </div>
     </div>
   );
