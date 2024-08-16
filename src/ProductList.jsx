@@ -257,8 +257,17 @@ const handleAddToCart = (product) => {
   dispatch(addItem(product));
   setAddedToCart((prevState) => ({
      ...prevState,
-     [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+     [product.name]: true,
    }));
+   // For debugging purposes
+   console.log("Item added:", plant);
+};
+const calculateTotalItems = (items) => {
+    let totalItems = 0;
+    items.forEach((item) => {
+        totalItems += item.quantity;
+    });
+    return totalItems;
 };
 
 const [addedToCart, setAddedToCart] = useState({});
@@ -282,6 +291,9 @@ return (
             <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a>
           </div>
           <div>
+            <span className="cart_quantity_count">
+              {calculateTotalItems(cart)}
+            </span>
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className='cart'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">

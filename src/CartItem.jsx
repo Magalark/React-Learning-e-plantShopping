@@ -7,6 +7,12 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
+  // For debugging
+  console.log("Cart array:", cart);
+  console.log("Cost of item:", item.cost);
+  console.log("Quantity:", item.quantity);
+  console.log("Total for item:", calculateTotalCost(item));
+
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => total + item.quantity * item.cost, 0);
