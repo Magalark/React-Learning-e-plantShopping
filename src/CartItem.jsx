@@ -17,30 +17,6 @@ const CartItem = ({ onContinueShopping }) => {
       totalCost += item.cost * item.quantity;
     });
     return totalCost;
-    //return 100;
-    //return cart.reduce((total, item) => total + item.quantity * item.cost, 0);
-
-    /*
-        let totalAmount = 0;
-    console.log(cart);
-    cart.map(item=>{
-        let cost = parseInt(item.cost.substring(1,item.cost.length));
-        totalAmount = totalAmount + (cost*item.quantity);
-    })
-    return totalAmount;
-    return cart.reduce((total, item) => {
-    // Remove the dollar sign and convert cost to a number
-    const numericCost = parseFloat(item.cost.replace('$', ''));
-    return total + item.quantity * numericCost;
-    }, 0);
-    
-    let totalAmount = 0;
-    for (let i = 0; i < cart.length; i++) {
-      const item = cart[i];
-      totalAmount += item.quantity * item.cost;
-    }
-    return totalAmount;
-    */
   };
 
   const handleContinueShopping = (e) => {
@@ -77,24 +53,6 @@ const CartItem = ({ onContinueShopping }) => {
     let totalCost = 0;
     totalCost += item.cost * item.quantity;
     return totalCost;
-    //return 1;
-    /*
-    const numericCost = parseFloat(item.cost.replace('$', ''));
-  
-    // Check if numericCost is a valid number
-    if (isNaN(numericCost)) {
-      console.error(`Invalid cost for item: ${item.name}`);
-      return 0; // Return 0 to avoid crashing
-    }
-  
-    return numericCost * item.quantity;
-    
-    const numericCost = parseFloat(item.cost.replace('$', ''));
-    return numericCost * item.quantity;
-    //let cost = parseInt(item.cost.substring(1,item.cost.length));
-    return (cost * item.quantity);
-    //return item.quantity * item.cost;
-    */
   };
 
   const handleCheckoutShopping = (e) => {

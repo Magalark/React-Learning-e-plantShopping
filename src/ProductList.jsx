@@ -11,7 +11,6 @@ function ProductList() {
     const dispatch = useDispatch();
     const [disabledProductList, setdisabledProducts] = useState([]);
 
-
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -260,9 +259,7 @@ const handleAddToCart = (product) => {
      ...prevState,
      [product.name]: true,
    }));
-   // For debugging purposes
-   console.log("Item added:", plant);
-   setdisabledProducts(disabledProductList + product.name);
+   setDisabledProducts((prevList) => [...prevList, product.name]);
 };
 const calculateTotalItems = (items) => {
     let totalItems = 0;
@@ -323,8 +320,8 @@ return (
                     <div className="product-description">{plant.description}</div>
                     <div className="product-cost">Cost: ${plant.cost}</div>
                     <button
-                        className={"product-button ${disabledProductList.includes(plant.name) ? 'disabled' : ''}"}
-                        style={{backgroundColor: "${disabledProductList.includes(plant.name) ? 'gray' : ''}"}}
+                        className={`product-button ${disabledProductList.includes(plant.name) ? 'disabled' : ''}`}
+                        style={{ backgroundColor: disabledProductList.includes(plant.name) ? 'gray' : '' }}
                         onClick={() => handleAddToCart(plant)}
                         disabled={disabledProductList.includes(plant.name)}
                     >
