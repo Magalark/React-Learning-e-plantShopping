@@ -1,8 +1,8 @@
 {
   "name": "shoppingcart",
   "private": true,
-  "homepage": "https://magalark.github.io/React-Learning-e-plantShopping/",
   "version": "0.0.0",
+  "homepage": "https://magalark.github.io/React-Learning-e-plantShopping/",
   "type": "module",
   "scripts": {
     "dev": "vite",
